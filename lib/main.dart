@@ -50,19 +50,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+  Controller controller = Get.put(Controller());
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -99,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             GetX<Controller>(
-              init: Controller(),
+              //init: Controller(),
               builder: (controller) {
                 return Text(
                   'The value is: ${controller.count}',
@@ -111,24 +99,21 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 10.0,
             ),
             ElevatedButton(
-              onPressed: () => Get.find<Controller>().increament(),
+              onPressed: () => controller.increament(),
+              //Get.find<Controller>().increament(),
               child: const Text('Increament Button'),
             ),
             const SizedBox(
               height: 10.0,
             ),
             ElevatedButton(
-              onPressed: () => Get.find<Controller>().decreamnet(),
+              onPressed: () => controller.decreamnet(),
+              //Get.find<Controller>().decreamnet(),
               child: const Text('Decreament Button'),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
